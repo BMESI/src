@@ -21,7 +21,7 @@ public class GUISTUFF extends JFrame {
 	 * 
 	 */
 	public GUISTUFF() {
-		JFrame frame = new JFrame("GridBagLayout Demo");
+		JFrame frame = new JFrame("");
 		// add book stuff
 		JLabel AddBookLabel = new JLabel("Add Book: ");
 		JTextField AddBookText = new JTextField("");
