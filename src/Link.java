@@ -4,11 +4,12 @@
  *	Link class  - makes new link for linked list
  */
 public class Link {
-	public String Data;	public Link Next;
+	public Book Data;	
+	public Link Next;
 	/**	Link constructor ; accepts string type
 	 * @param mData
 	 */
-	public Link(String mData) {
+	public Link(Book mData) {
 		Data = mData;
 		
 	}
@@ -16,6 +17,6 @@ public class Link {
 	 * @return
 	 */
 	public String DisplayLink() {
-		System.out.println("Item: "+Data);	return Data;
+		System.out.println("Item: "+Data);	return Data.getBookName();
 	}
 }

@@ -1,104 +1,107 @@
+import java.awt.EventQueue;
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTable;
+import javax.swing.JList;
 
 /**
- * @author Ben Mesi - cis152 - data structurs gui class to make gui stuff
- *         (add/checkout functions)
+ * @author Ben Mesi - cis152 data structures
+ * GUI class
  */
-public class GUISTUFF extends JFrame {
-	private final int HEIGHT = 400;
-	private final int WIDTH = 700;
+public class GUISTUFF implements ActionListener{
+
+	JFrame frame;
+	private JTextField ChecOutText;
+	private JTextField AddText;
+	private JTextField RemoveText;
+	private JTextField ReturnText;
+	LinkedList a = new LinkedList();
+
 
 	/**
-	 * guiSTUFF contructor; makes gui stuff
-	 * 
+	 * Create the application.
 	 */
 	public GUISTUFF() {
-		JFrame frame = new JFrame("");
-		// add book stuff
-		JLabel AddBookLabel = new JLabel("Add Book: ");
-		JTextField AddBookText = new JTextField("");
-		JButton AddBookButton = new JButton("Add");
-		// Remove out functions
-		JLabel RemoveBookLabel = new JLabel("Remove: ");
-		JTextField RemoveBookText = new JTextField("");
-		JButton RemoveBookButton = new JButton("Remove");
-		// Check out
-		JLabel CheckOutBookLabel = new JLabel("Check out: ");
-		JTextField CheckOutBookText = new JTextField("");
-		JButton CheckOutBookButton = new JButton("Check out");
+		initialize();
+	}
 
-		JPanel panel = new JPanel(new GridBagLayout());
-		GridBagConstraints cst = new GridBagConstraints();
-
-		// add label to the panel
-		cst.fill = GridBagConstraints.HORIZONTAL;
-		cst.gridx = 0;
-		cst.gridy = 0;
-		panel.add(AddBookLabel, cst);
-
-		// add textfield to the panel
-		cst.fill = GridBagConstraints.HORIZONTAL;
-		cst.gridx = 3;
-		cst.gridy = 0;
-		AddBookText.setPreferredSize(new Dimension(140, 30));
-		panel.add(AddBookText, cst);
-
-		// add bookbutton to the panel
-		cst.fill = GridBagConstraints.HORIZONTAL;
-		cst.gridx = 15;
-		cst.gridy = 0;
-		panel.add(AddBookButton, cst);
-
-		// add removeBookLabel to the panel
-		cst.fill = GridBagConstraints.HORIZONTAL;
-		cst.gridx = 0;
-		cst.gridy = 9;
-		panel.add(RemoveBookLabel, cst);
-
-		// add removetextfield to the panel
-		cst.fill = GridBagConstraints.HORIZONTAL;
-		cst.gridx = 3;
-		cst.gridy = 500;
-		AddBookText.setPreferredSize(new Dimension(140, 20));
-		panel.add(RemoveBookText, cst);
-
-		// add button removeOutBookButton to the panel
-		cst.fill = GridBagConstraints.SOUTH;
-		cst.gridx = 15;
-		cst.gridy = 500;
-		panel.add(RemoveBookButton, cst);
-
-		// add CheckOutBookLabel to the panel
-		cst.fill = GridBagConstraints.HORIZONTAL;
-		cst.gridx = 0;
-		cst.gridy = 900;
-		panel.add(CheckOutBookLabel, cst);
-
-		// add c/o textfield to the panel
-		cst.fill = GridBagConstraints.HORIZONTAL;
-		cst.gridx = 3;
-		cst.gridy = 900;
-		AddBookText.setPreferredSize(new Dimension(140, 20));
-		panel.add(CheckOutBookText, cst);
-
-		// add c/o button CheckOutBookButton to the panel
-		cst.fill = GridBagConstraints.SOUTH;
-		cst.gridx = 15;
-		cst.gridy = 900;
-		panel.add(CheckOutBookButton, cst);
-
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(WIDTH, HEIGHT);
+		frame.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 11, 414, 239);
 		frame.getContentPane().add(panel);
-		frame.setVisible(true);
+		panel.setLayout(null);
+		
+		AddText = new JTextField();
+		AddText.setBounds(66, 19, 239, 20);
+		panel.add(AddText);
+		AddText.setColumns(10);
+		
+		JButton AddButton = new JButton("Add");
+		AddButton.setBounds(315, 18, 89, 23);
+		panel.add(AddButton);
+		AddButton.addActionListener(this);
+		
+		RemoveText = new JTextField();
+		RemoveText.setBounds(66, 53, 239, 20);
+		panel.add(RemoveText);
+		RemoveText.setColumns(10);
+		
+		JButton RemoveButton = new JButton("Remove");
+		RemoveButton.setBounds(315, 52, 89, 23);
+		panel.add(RemoveButton);
+		
+		JLabel CheckOutLabel = new JLabel("Enter title in textfield to check out/ add/ remove");
+		CheckOutLabel.setBounds(10, 0, 289, 14);
+		panel.add(CheckOutLabel);
+		
+		ReturnText = new JTextField();
+		ReturnText.setBounds(66, 84, 239, 20);
+		panel.add(ReturnText);
+		ReturnText.setColumns(10);
+		
+		JButton ReturnButton = new JButton("Return");
+		ReturnButton.setBounds(315, 86, 89, 23);
+		panel.add(ReturnButton);
+		
+		ChecOutText = new JTextField();
+		ChecOutText.setBounds(66, 119, 239, 20);
+		panel.add(ChecOutText);
+		ChecOutText.setColumns(10);
+		
+		JButton CheckOutButton = new JButton("Check Out");
+		CheckOutButton.setBounds(315, 120, 89, 23);
+		panel.add(CheckOutButton);
+		
+		JList LibraryList = new JList();
+		LibraryList.setBounds(38, 162, 366, 66);
+		panel.add(LibraryList);
+		
+	}
+
+	/* (non-Javadoc) make new instance of book obj and Insert into LL
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		Book New = new Book(this.AddText.getText());
+		a.insertFirst(New);
 
 	}
 }
