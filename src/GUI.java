@@ -16,7 +16,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 
 /**
- * @author Ben Mesi
+ * @author Ben Mesi - CIS 152 - Data Structures
  * Gui components 
  */
 public class GUI {
@@ -28,16 +28,19 @@ public class GUI {
 	static List LibraryList = new List(0, true);
 	static Book b = new Book();
 	static LinkedList a = new LinkedList();
+	private JTextField CustomerIDCheckOut;
+	private JTextField CustomerIDReturn;
+	public CheckOut Transaction;
 	/** Making GUI components; but logic handling should really be separated from all of this...
 	 * 
 	 */
 	public GUI() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 459);
+		frame.setBounds(100, 100, 618, 459);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 414, 398);
+		panel.setBounds(10, 11, 582, 398);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		AddText = new JTextField();
@@ -58,21 +61,35 @@ public class GUI {
 		CheckOutLabel.setBounds(10, 0, 289, 14);
 		panel.add(CheckOutLabel);
 		ReturnText = new JTextField();
-		ReturnText.setBounds(66, 84, 239, 20);
+		ReturnText.setBounds(66, 153, 239, 20);
 		panel.add(ReturnText);
 		ReturnText.setColumns(10);
 		JButton ReturnButton = new JButton("Return");
-		ReturnButton.setBounds(315, 86, 89, 23);
+		ReturnButton.setBounds(483, 152, 89, 23);
 		panel.add(ReturnButton);
 		ChecOutText = new JTextField();
-		ChecOutText.setBounds(66, 119, 239, 20);
+		ChecOutText.setBounds(66, 184, 239, 20);
 		panel.add(ChecOutText);
 		ChecOutText.setColumns(10);
 		JButton CheckOutButton = new JButton("Check Out");
-		CheckOutButton.setBounds(315, 120, 89, 23);
+		CheckOutButton.setBounds(483, 183, 89, 23);
 		panel.add(CheckOutButton);
-		LibraryList.setBounds(10, 145, 295, 243);
+		LibraryList.setBounds(10, 210, 495, 178);
 		panel.add(LibraryList);
+		
+		CustomerIDCheckOut = new JTextField();
+		CustomerIDCheckOut.setBounds(387, 184, 86, 20);
+		panel.add(CustomerIDCheckOut);
+		CustomerIDCheckOut.setColumns(10);
+		
+		CustomerIDReturn = new JTextField();
+		CustomerIDReturn.setBounds(387, 153, 86, 20);
+		panel.add(CustomerIDReturn);
+		CustomerIDReturn.setColumns(10);
+		
+		JLabel CustomerIDLabel = new JLabel("Customer ID ");
+		CustomerIDLabel.setBounds(387, 128, 76, 14);
+		panel.add(CustomerIDLabel);
 		LibraryList.setVisible(true);
 // action listeners
 // 
@@ -97,6 +114,28 @@ public class GUI {
 				GUI.a.Delete(b);
 			}
 		});
+		CustomerIDCheckOut.addActionListener(new ActionListener() {	
+			/*  Doing delete from GUI/display List and LinkedList
+			 * (non-Javadoc)
+			 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+			@SuppressWarnings("unlikely-arg-type")
+			public void actionPerformed(ActionEvent arg0) {
+				CUSTGUI.MainCustomerList.contains(ChecOutText);
+				// To do - relate customer information to book 
+			   
+				
+			}
+		});
+		CustomerIDReturn.addActionListener(new ActionListener() {	
+			/*  Doing delete from GUI/display List and LinkedList
+			 * (non-Javadoc)
+			 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+			public void actionPerformed(ActionEvent arg0) {
+			//	Transaction.CheckOutAction(ChecOutText, Customer );
+			//	GUI.a.Delete(b);
+			}
+		});
 	}
-
 }

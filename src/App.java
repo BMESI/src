@@ -7,7 +7,10 @@ import java.awt.event.ActionEvent;
 public class App {
 	public static void main(String[] args) {
 					GUI Do = new GUI();
-					Do.frame.setVisible(true);		
+					CUSTGUI DoAnother = new CUSTGUI();
+
+					Do.frame.setVisible(true);	
+					DoAnother.frame.setVisible(true);
 				//	LinkedList a = new LinkedList();
 	}
 }
