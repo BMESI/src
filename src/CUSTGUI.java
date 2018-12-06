@@ -57,9 +57,9 @@ public class CUSTGUI {
 		JButton ReturnButton = new JButton("Return");
 		ReturnButton.setBounds(388, 83, 125, 23);
 		panel.add(ReturnButton);
-		JButton CheckOutButton = new JButton("ViewCustomerInfo");
-		CheckOutButton.setBounds(388, 117, 125, 23);
-		panel.add(CheckOutButton);
+		JButton ViewCustButton = new JButton("ViewCustomerInfo");
+		ViewCustButton.setBounds(388, 117, 125, 23);
+		panel.add(ViewCustButton);
 		CustomerList.setBounds(10, 145, 430, 243);
 		panel.add(CustomerList);
 
@@ -102,6 +102,24 @@ public class CUSTGUI {
 						CUSTGUI.AddCustomer.getText() + " " + ThisCustomer.getID() + " " + ThisCustomer.getPhone());
 				// remove customer from arraylist
 				MainCustomerList.remove(ThisCustomer);
+
+			}
+		});
+		ViewCustButton.addActionListener(new ActionListener() {
+			/*
+			 * 
+			 * @see
+			 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+			 */
+			@SuppressWarnings("unlikely-arg-type")
+			public void actionPerformed(ActionEvent arg0) {
+				// remove customer from arraylist
+				if ( MainCustomerList.contains(AddCustomer.getText()) == true) {
+					String CustSearch = AddCustomer.getText();
+					MainCustomerList.get(MainCustomerList.indexOf(CustSearch));
+					CUSTGUI.CustomerList.add(
+							CUSTGUI.AddCustomer.getText() + " " + ThisCustomer.getID() + " " + ThisCustomer.getPhone() + " --"+ ThisCustomer.CheckedOut);
+					}
 
 			}
 		});

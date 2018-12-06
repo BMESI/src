@@ -121,8 +121,20 @@ public class GUI {
 			 */
 			@SuppressWarnings("unlikely-arg-type")
 			public void actionPerformed(ActionEvent arg0) {
-				CUSTGUI.MainCustomerList.contains(ChecOutText);
-				// To do - relate customer information to book 
+				Book rental = new Book();
+				if (a.equals(ChecOutText.getText()) &&  (CUSTGUI.MainCustomerList.contains(CustomerIDCheckOut.getText()))) {
+					rental.setBookName(ChecOutText.getText()); 
+				
+					int custindex = CUSTGUI.MainCustomerList.indexOf(ChecOutText.getText());
+					Customer customer = CUSTGUI.MainCustomerList.get(custindex);
+					customer.setCheckedOut(rental);
+					 CUSTGUI.MainCustomerList.set(custindex, customer);
+
+					Transaction = new CheckOut(customer, rental);
+
+				}
+				// To do - relate customer information to book  
+				/// 11/30 -- still not working
 			   
 				
 			}
